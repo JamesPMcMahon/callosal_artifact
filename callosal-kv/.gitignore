@@ -1,0 +1,17 @@
+/build/
+/callosal-kv
+/config.env
+/runs/
+/results-*/
+/results/
+/harness/.venv/
+/harness/.ruff_cache/
+/harness/.mypy_cache/
+/harness/.pytest_cache/
+**/__pycache__/
+*.o
+*.d
+*.gcno
+*.gcda
+.DS_Store
+compile_commands.json

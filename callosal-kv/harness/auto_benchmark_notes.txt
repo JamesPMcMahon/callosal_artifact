@@ -1,0 +1,32 @@
+
+put both the python_start.py and run_script.sh in the fxmark/bin folder 
+put python_server.py somewhere on one of the vms, I used vm1, if you do that the IP addresses in here should work. 
+Need to have a separate terminal session open to run it.
+
+(for VM1 running DRWOH for 100 seconds, and the python_server running on vm host 1)
+start the script by running:
+-------------------------------------------
+bash run-script.sh /home/0/test_dir DRWOH 100 0
+-------------------------------------------
+
+get the ip address from ifconfig, if the "server" script is 
+running on the same vm host then just use inet on ens3.
+If the server script is not running on the same vm host then use the ens9
+ip address (if server script is on vm1, then to access vm3 use 0 instead of
+0)
+
+example:
+-------------------------------------------
+bash run-script.sh /home/0/test_dir DRWOH 100 0
+-------------------------------------------
+
+after running the run_script.sh on each node, start the automated benchmarking by
+running the python_server.py script. 
+
+example:
+------------------------------------------
+python3 python_server.py 100 0 0 0 0
+------------------------------------------
+with 100 being the benchmark time.
+and then the IP addresses in their desired order
+

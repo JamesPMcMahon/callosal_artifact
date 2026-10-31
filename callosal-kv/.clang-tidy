@@ -1,0 +1,21 @@
+Checks: >
+  -*,
+  bugprone-*,
+  clang-analyzer-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  misc-*,
+  cert-*,
+  concurrency-*,
+  -readability-magic-numbers,
+  -readability-function-cognitive-complexity,
+  -readability-identifier-length,
+  -bugprone-easily-swappable-parameters,
+  -misc-include-cleaner
+
+WarningsAsErrors: '*'
+
+HeaderFilterRegex: '(src|tests)/.*\.h$'
+
+FormatStyle: file
