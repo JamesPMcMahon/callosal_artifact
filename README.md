@@ -19,7 +19,7 @@ The code in this repository is included for purposes of artifact availability. T
 ## Filesystem code
 The [filesystem](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/callosal_fs) source code is included; we ran it on a modified version of the 4.15 kernel with the MIND subsystem built in. 
 
-### How to build Callosal Kernel (adapted from [MIND Kernel](https://github.com/yale-nova/mind/tree/main))
+### How to build MIND Kernel for Callosal (adapted from [MIND Kernel](https://github.com/yale-nova/mind/tree/main))
 - Please find the link to each system component below.
 1. Modified [MIND kernel](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/mind) for Callosal
 2. Switch program
@@ -39,7 +39,7 @@ The [filesystem](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/ca
    Note: (combined address taken from `dmesg`: the first address after the printout "addresses" after the size is printed)
    (readAddress=1 is required for the module to read address from command line)
    
-4. Generate test image by creating a zeroed file of 50 MiB. We can then mount this image on a system with the collosal kernel module installed.
+4. Generate 'test' image by creating a zeroed file of 50 MiB. We can then mount this image on a system with the Callosal kernel module installed.
    ```
    mkdir -p test
    dd if=/dev/zero of=test.img bs=1M count=50
@@ -53,10 +53,10 @@ The [filesystem](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/ca
    sudo rmmod simplefs
    ```
 
-## Modified FxMark
+### Modified FxMark
 We included a modified version of FxMark for testing; the changes are primarily for supporting synchronization across multiple nodes 
 
-### running FxMark across the separate systems
+#### running FxMark across the separate systems
 1. run make
 2. inside of the bin directory there are 3 wrapper scripts one for CallosalFS, NFS, and CephFS
     ```
