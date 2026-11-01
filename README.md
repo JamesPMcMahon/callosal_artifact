@@ -55,7 +55,7 @@ The [filesystem](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/ca
 
 ## Running FxMark benchmarks and applications
 
-### Modified FxMark
+### Modified [FxMark](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/fxmark_synced)
 We included a modified version of FxMark for testing; the changes primarily support synchronization across multiple nodes. 
 
 #### Running FxMark across the separate systems
@@ -82,7 +82,7 @@ FxMark and the Key Value Store sync starts and thread counts using a ```python_s
 
 Specific thread counts and ordering are broken down in the threadcounts variable in this file
 
-### Callosal Ring Buffer 
+### Callosal [Ring Buffer](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/ring_buffer) 
 We included a simple benchmark that uses files to create a ring buffer to send data from one node to another.
 This benchmark relies on cross-node file-synchronization correctness, and tests performance.
 
@@ -95,7 +95,7 @@ This benchmark relies on cross-node file-synchronization correctness, and tests 
 7. NOTE: On CallosalFS, the files should be pre-created on both nodes.
 8. The output reports the performance results.
 
-### Callosal Key Value Store
+### Callosal [Key Value Store](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/callosal-kv)
 This tests a version of an exclusive-writer, multiple-reader key-value store that synchronizes state through the filesystem. 
 
 #### Requirements
