@@ -2,43 +2,41 @@
 # Callosal Artifacts
 This repository contains the following modules:
 1. A filesystem using Callosal's page cache sync
-2. Modified version of fxmark for multi-node setup
-3. Callosal ring buffer implementation
-4. Callosal key-value store implementation
+2. Modified version of [MIND kernel](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/mind)
+3. Modified version of fxmark for multi-node setup
+4. Callosal ring buffer implementation
+5. Callosal key-value store implementation
 
 # Warning:
-The code in this repository is included for purposes of artifact availability. The Callosal code relies on specific machine configurations and code that is subject to NDA. Further, certain parts of this artifact have been scrubbed of specific IP addresses, MAC addresses, users and directories. This artifact is built with the assumption the correct machine configuration and additional code is available/restored.
-
-For NFS and CephFS the benchmarks should be executable on other machines, assuming correct file paths are changed. 
-
+The code in this repository is included for purposes of artifact availability. The Callosal code relies on specific machine configurations and code that is subject to an NDA. Further, certain parts of this artifact have been scrubbed of specific IP addresses, MAC addresses, users, and directories. This artifact is built with the assumption that the correct machine configuration and additional code are available/restored.
 
 ### Hardware Requirements
-- Default cluster environment consists of 4 compute blade VMs, 1 memory blade VM, and 1 programmable switch. We used 100 Gbps link for all connections between VM and the switch; VMs are distributed over 2 compute servers and 1 memory server.
+- Default cluster environment consists of 4 compute blade VMs, 1 memory blade VM, and 1 programmable switch. We used a 100 Gbps link for all connections between VMs and the switch; VMs are distributed over 2 compute servers and 1 memory server.
 - We enabled IO-MMU and used PCIe passthrough to attach NIC to VMs.
 
 ## Artifact Usage Instructions
 
 ## Filesystem code
-the filesystem source code is included, we ran it on a modified version of kernel 4.15 with the MIND subsystem built into it 
+The [filesystem](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/callosal_fs) source code is included; we ran it on a modified version of the 4.15 kernel with the MIND subsystem built in. 
 
 ### How to build Callosal Kernel (adapted from [MIND Kernel](https://github.com/yale-nova/mind/tree/main))
 - Please find the link to each system component below.
-1. [Callosal kernel]()
+1. Modified [MIND kernel](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/mind) for Callosal
 2. Switch program
-    - [Dependencies]()
-    - [Control plane C/C++ program]()
-    - [Data plane P4 program]()
+    - [Dependencies](https://github.com/JamesPMcMahon/callosal_artifact/blob/main/mind/mind_switch_ctrl/dependencies.md)
+    - [Control plane C/C++ program](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/mind/mind_switch_ctrl)
+    - [Data plane P4 program](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/mind/mind_p4)
   
-### How to build and use CallosalFS module
+### How to build and use the CallosalFS module
 - Please find the link to each system component below.
 1. [CallosalFS](https://github.com/4rnge/Callosal_artifacts/tree/main/callosal_fs) module
-2. Place folder within the linux/fs/ directory
-3. To mount the module in 4 compute blade VMs
+2. Clone the [CallosalFS](https://github.com/4rnge/Callosal_artifacts/tree/main/callosal_fs) module within the linux/fs/ directory
+3. To mount the module on 4 compute blade VMs
    ```
    sudo insmod simplefs.ko [first node]
    sudo insmod simplefs.ko readAddress=1 combined_address=-25289002319872 [other 3 nodes]
    ```
-   Note: (combined address taken from `dmesg` the first address after the printout "addresses" after the size is printed)
+   Note: (combined address taken from `dmesg`: the first address after the printout "addresses" after the size is printed)
    (readAddress=1 is required for the module to read address from command line)
    
 4. Generate test image by creating a zeroed file of 50 MiB. We can then mount this image on a system with the collosal kernel module installed.
@@ -49,14 +47,14 @@ the filesystem source code is included, we ran it on a modified version of kerne
    sudo mount -o loop -t simplefs test.img test
    ```
 5. Run tests within the 'test' directory. 
-4. Remove kernel mount point and module:
+4. Remove the kernel mount point and module:
    ```
    sudo umount test
    sudo rmmod simplefs
    ```
 
 ## Modified FxMark
-We included a modified version of FxMark for testing, the changes are primarily for supporting synchronization across multiple nodes 
+We included a modified version of FxMark for testing; the changes are primarily for supporting synchronization across multiple nodes 
 
 ### running FxMark across the separate systems
 1. run make
