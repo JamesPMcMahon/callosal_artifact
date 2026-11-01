@@ -1,11 +1,3 @@
-## TODO:
-1. Double check to make sure that the scripts are correctly included and the correct usage is described \ 
-2. ring buffer: include better run details\
-3. fxmark: verify different run scripts, clean directory names, how to run run scripts\
-4. kvs: verify different run scripts, clean directory names, how to run run scripts, new_nfs_script.sh requirements \ 
-5. mind kernel\
-6. clean up scripts of comments and commented out configurations
-7. Maybe remove auto benchmark notes or clean them up in callosal-kv harness
 
 # Callosal Artifacts
 This repository contains the following modules:
