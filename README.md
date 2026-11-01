@@ -146,6 +146,6 @@ Callosal-FS steps:
 Similarly, NFS and CephFS are tested with: run\_nfs.sh and run\_script.sh respectively.
 These scripts can be configured for the distribution type (zipf uniform) and write percentage.
 
-`python\_server.py` is used for thread count distribution and syncing over UDP (present in the sync\_scripts directory as well).
+`python_server.py` is used for thread count distribution and syncing over UDP (present in the sync\_scripts directory as well).
 
 
