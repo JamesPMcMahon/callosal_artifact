@@ -101,8 +101,8 @@ This tests a version of an exclusive-writer, multiple-reader key-value store tha
 #### Requirements
 
 - C toolchain with `make`, `clang` or `cc`, libc, and pthreads
-- Python 3.12+ and `uv` for the multi-node harness under [`harness/`](harness)
-- `jq` only if you use [`scripts/sweep.sh`](scripts/sweep.sh)
+- Python 3.12+ and `uv` for the multi-node harness under [`harness/`]([harness](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/callosal-kv/harness))
+- `jq` only if you use [`scripts/sweep.sh`]([scripts/sweep.sh](https://github.com/JamesPMcMahon/callosal_artifact/blob/main/callosal-kv/scripts/sweep.sh))
 - Linux is the primary target for benchmark runs; the remote setup script targets Ubuntu 24.04
 
 Ubuntu 24.04 packages for a worker node:
