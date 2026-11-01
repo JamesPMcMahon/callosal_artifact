@@ -14,7 +14,7 @@ The code in this repository is included for purposes of artifact availability. T
 - Default cluster environment consists of 4 compute blade VMs, 1 memory blade VM, and 1 programmable switch. We used a 100 Gbps link for all connections between VMs and the switch; VMs are distributed over 2 compute servers and 1 memory server.
 - We enabled IO-MMU and used PCIe passthrough to attach NIC to VMs.
 
-## Artifact Usage Instructions
+# Artifact Usage Instructions
 
 ## Filesystem code
 The [filesystem](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/callosal_fs) source code is included; we ran it on a modified version of the 4.15 kernel with the MIND subsystem built in. 
@@ -37,9 +37,9 @@ The [filesystem](https://github.com/JamesPMcMahon/callosal_artifact/tree/main/ca
    sudo insmod simplefs.ko readAddress=1 combined_address=-25289002319872 [other 3 nodes]
    ```
    Note: (combined address taken from `dmesg`: the first address after the printout "addresses" after the size is printed)
-   (readAddress=1 is required for the module to read address from command line)
+   (readAddress=1 is required for the module to read the address from the command line).
    
-4. Generate 'test' image by creating a zeroed file of 50 MiB. We can then mount this image on a system with the Callosal kernel module installed.
+4. Generate `test` image by creating a zeroed file of 50 MiB. We can then mount this image on a system with the Callosal kernel module installed.
    ```
    mkdir -p test
    dd if=/dev/zero of=test.img bs=1M count=50
@@ -126,7 +126,7 @@ To run our tests,
 1. In the harness folder, there are the scripts: dfs_run_script.sh new_nfs_script.sh and run_script.sh used for CallosalFS, NFS, and CephFS.
 2. In the scripts, the distributions and read/write ratio can be configured by changing ```dists=("zipf" "uniform")``` and ```ratios=("0.0" "0.01" "0.05")```.
 3. The directory can be configured within the script as well using the ```--path argument within the script for the callosal-kv execution```.
-4. To run the scripts across nodes use: ```sudo bash dfs_run_script.sh (nodeid 0-3) (total nodes 1-4) (time seconds) (this IP address) (number of thread combinations per config) 239400 500```.
+4. To run the scripts across nodes, use: ```sudo bash dfs_run_script.sh (nodeid 0-3) (total nodes 1-4) (time seconds) (this IP address) (number of thread combinations per config) 239400 500```.
 5. Thread counts and start times are synced using ```python_server.py```; thread count 9 doesn't auto-end the benchmark.
 6. The results are printed on stdout. Adding them up gives the results that we reported. 
 
