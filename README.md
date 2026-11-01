@@ -118,7 +118,8 @@ sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/c
 
 #### Build and Test
 
-```bash make
+```
+bash make
 ```
 
 To run our tests, 
@@ -130,16 +131,16 @@ To run our tests,
 6. The results are printed on stdout. Adding them up gives the results that we reported. 
 
 NOTE: Callosal-FS requires files to be pre-created, pre-populated, and pre-read to ensure correct size sync when testing multiple nodes.
-This population is done with x\_echo\_files.sh, with x being the number of nodes. Then one node should run bash populate.sh populate\_file directory. The populate file has 500 4KB pages of text, since that is the maximum file size we tested with.
+This population is done with `x_echo_files.sh`, with x being the number of nodes. Then one node should run bash populate.sh populate\_file directory. The populate file has 500 4KB pages of text, since that is the maximum file size we tested with.
 Then, for each node, run cat directory. Now the sizes should be properly synced. Otherwise, there might be issues that come up (these files are present in the Callosal-FS section of the repository). 
 
 Callosal-FS steps:
 1. Install the Callosal-FS module on nodes
-2. run ``sudo bash ../x_echo_files.sh`` on both nodes for x number of nodes within the test directory
+2. Run ``sudo bash ../x_echo_files.sh`` on both nodes for x number of nodes within the test directory
 3. On one node, run ```sudo bash populate.sh 500_page_file test``` 
 4. Run cat test/* on all other nodes
-5. run the dfs_run_script ```sudo bash dfs_run_script.sh this_node total_nodes duration this_ip run_count 239400 500```
-6. run the ```python3 python_server.py duration IP1 IP2 IP3 IP4``` with the configured thread count/order 
+5. Run the dfs_run_script ```sudo bash dfs_run_script.sh this_node total_nodes duration this_ip run_count 239400 500```
+6. Run the ```python3 python_server.py duration IP1 IP2 IP3 IP4``` with the configured thread count/order 
 7. Add up the output results
 
 
